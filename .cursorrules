@@ -1,0 +1,170 @@
+# Initial Load Requirements
+initialization:
+  required_files:
+    - path: "/agent.md"
+      priority: 1
+      description: "Agent behavior and course interaction logic"
+      validation:
+        - check_exists: true
+        - check_readable: true
+        - validate_content: true
+      on_failure:
+        - log_error
+        - halt_execution
+        - notify_developer
+
+  sequence:
+    1. load_agent_rules
+    2. validate_agent_configuration
+    3. initialize_course_context
+    4. proceed_with_remaining_rules
+
+version: "1.0"
+last_updated: "2024-12-21"
+
+# Development Guidelines
+project:
+  name: "Interactive Learning System with GPT Memory"
+  description: "Self-paced learning platform with intelligent progress tracking"
+  
+  structure:
+    - /notebooks/     # Course content
+    - /docs/         # Documentation
+    - /memory/       # State tracking
+    - /config/       # Configuration
+    - /tracking/     # Progress data
+    - /templates/    # Content templates
+
+# Content Creation Rules
+content_development:
+  notebooks:
+    format:
+      - use_clear_sections
+      - include_learning_objectives
+      - provide_examples
+      - end_with_exercises
+    
+    naming:
+      pattern: "##_section_name.ipynb"
+      example: "01_introduction.ipynb"
+  
+  documentation:
+    required_files:
+      - "section_overview.md"
+      - "learning_objectives.md"
+      - "prerequisites.md"
+    
+    format:
+      - use_markdown
+      - include_metadata
+      - link_related_content
+
+# Code Standards
+code_rules:
+  editing:
+    show_only_changes: true
+    include_file_paths: true
+    format: |
+      ```language:path/to/file
+      // ... existing code ...
+      {{ changes }}
+      // ... existing code ...
+      ```
+    require:
+      - language_specification
+      - file_path
+      - context
+
+# Template Structures
+templates:
+  notebook:
+    - title
+    - objectives
+    - prerequisites
+    - content_sections
+    - exercises
+    - next_steps
+  
+  documentation:
+    - overview
+    - detailed_content
+    - examples
+    - common_issues
+    - further_reading
+
+# Development Workflow
+workflow:
+  content_addition:
+    1. create_from_template
+    2. add_content
+    3. add_exercises
+    4. update_metadata
+    5. link_related_content
+  
+  content_update:
+    1. backup_existing
+    2. make_changes
+    3. update_references
+    4. validate_links
+
+# Validation Rules
+validation:
+  notebooks:
+    - cells_executable
+    - dependencies_listed
+    - outputs_cleared
+  
+  documentation:
+    - links_valid
+    - metadata_complete
+    - format_correct
+
+# File Organization
+file_structure:
+  notebooks:
+    path: "/notebooks/"
+    sections:
+      - introduction/
+      - fundamentals/
+      - advanced/
+      - exercises/
+  
+  docs:
+    path: "/docs/"
+    sections:
+      - getting_started/
+      - course_content/
+      - references/
+  
+  memory:
+    path: "/memory/"
+    sections:
+      - user_states/
+      - progress_tracking/
+      - interaction_history/
+
+# Development Tools
+tools:
+  required:
+    - jupyter
+    - markdown_editor
+    - version_control
+  
+  recommended:
+    - notebook_validator
+    - link_checker
+    - metadata_manager
+
+# Metadata Requirements
+metadata:
+  notebook:
+    - section_number
+    - difficulty_level
+    - estimated_time
+    - prerequisites
+  
+  documentation:
+    - last_updated
+    - author
+    - version
+    - dependencies 
